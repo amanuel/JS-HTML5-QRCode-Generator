@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <script type="text/javascript" src="qrcode.js">
+</script>
+    <script type="text/javascript" src="html5-qrcode.js">
+</script>
+    <title>
+      QRCode Generator Example
+    </title>
+    <style type="text/css" media="screen">
+      body { text-align:center; }
+    </style>
+  </head>
+  <body>
+    <h1>
+      QRCode Generator Example
+    </h1>
+    <form name="QRform" id="QRform">
+      <textarea name="textField" rows="8" cols="50" onkeyup='updateQRCode(this.value)' onclick="this.focus();this.select();">I love QR Codes. Type in here and watch the QR code below update.</textarea>
+    </form>
+    
+    <!-- This is where our QRCode will appear in. -->
+    <div id="qrcode"></div>
+    
+    <script type="text/javascript">
+      function updateQRCode(text) {
+
+        var element = document.getElementById("qrcode");
+
+        var bodyElement = document.body;
+        if(element.lastChild)
+          element.replaceChild(showQRCode(text), element.lastChild);
+        else
+          element.appendChild(showQRCode(text));
+
+      }
+
+      updateQRCode('I love QR Codes. Type in here and watch the QR code below update.');
+    </script>
+      <p><a href="https://github.com/amanuel/JS-HTML5-QRCode-Generator" onmouseover="updateQRCode(this.href)">Project Homepage</a></p>
+      <p><a href="http://ticklespace.com" onmouseover="updateQRCode(this.href)">TickleSpace</a></p>
+  </body>
+</html>
