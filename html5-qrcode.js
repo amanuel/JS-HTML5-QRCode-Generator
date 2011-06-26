@@ -29,16 +29,18 @@ function showQRCode(text) {
     return errorChild;
   }
     
-  var qrsize = qr.getModuleCount()*6;
- 	canvas.setAttribute('height',qrsize + 30);
- 	canvas.setAttribute('width',qrsize + 30);
+  var qrsize = qr.getModuleCount();
+ 	canvas.setAttribute('height',(qrsize * 6) + 30);
+ 	canvas.setAttribute('width',(qrsize * 6) + 30);
+ 	var black = "rgb(0,0,0)";
+ 	var white = "rgb(255,255,255)";
  	if (canvas.getContext){
- 		for (var r = 0; r < qr.getModuleCount(); r++) {
- 			for (var c = 0; c < qr.getModuleCount(); c++) {
+ 		for (var r = 0; r < qrsize; r++) {
+ 			for (var c = 0; c < qrsize; c++) {
  				if (qr.isDark(r, c))
- 					qrCanvasContext.fillStyle = "rgb(0,0,0)";  
+ 					qrCanvasContext.fillStyle = black;  
  				else
- 					qrCanvasContext.fillStyle = "rgb(255,255,255)";  
+ 					qrCanvasContext.fillStyle = white;  
  				qrCanvasContext.fillRect ((c*6) + 15,(r*6) + 15,6,6);  
  			}	
  		}
